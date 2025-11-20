@@ -1,14 +1,10 @@
-use std::io;
 pub enum Command {
     Set(String, String),
     Get(String),
     Pop(String),
     Help(),
 }
-pub fn get_command() -> Option<Command> {
-    println!("Enter command: ");
-    let mut command: String = String::new();
-    io::stdin().read_line(&mut command).expect("enter command");
+pub fn get_command(command: &String) -> Option<Command> {
     let args: Vec<String> = command.trim().split(" ").map(String::from).collect();
 
     match args[0].as_str() {
