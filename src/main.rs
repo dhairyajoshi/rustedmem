@@ -1,5 +1,8 @@
 mod cmd;
+mod store;
 use cmd::handler::handle_command;
 fn main() {
-    handle_command();
+    loop {
+        handle_command();
+    }
 }
