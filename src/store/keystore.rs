@@ -1,8 +1,10 @@
 use once_cell::sync::Lazy;
 use std::collections::HashMap;
+use std::sync::Arc;
 use std::sync::Mutex;
 
-static KEY_STORE: Lazy<Mutex<HashMap<String, String>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+pub static KEY_STORE: Lazy<Arc<Mutex<HashMap<String, String>>>> =
+    Lazy::new(|| Arc::new(Mutex::new(HashMap::new())));
 
 pub fn add(key: String, value: String) {
     {
